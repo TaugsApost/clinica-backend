@@ -36,7 +36,8 @@ public abstract class AbstractServiceBean<E extends AbstractEntity<T>, T extends
 		E entity = this.em.find(entityClass, id);
 		if (entity == null) {
 			log.log(Level.WARNING, "Não foi possivel encontrar a entidade de " + entityClass.getName() + " com o id " + id);
-			throw new ServiceException("Não foi possivel encontrar a entidade de " + entityClass.getName() + " com o id " + id);
+			// throw new ServiceException("Não foi possivel encontrar a entidade de " + entityClass.getName() + " com o id " + id);
+			return null;
 		}
 		return entity;
 	}

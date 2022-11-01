@@ -36,6 +36,8 @@ public class Medico extends Funcionario {
 	 */
 	private static final long serialVersionUID = 6320399040147760013L;
 
+	public static final String BUSCAR_POR_ESPECIALIDADE = "SELECT medico From Medico medico WHERE medico.especialidade = :especialidade";
+
 	@ManyToOne
 	@JoinColumn(name = "id_especialidade", nullable = false, foreignKey = @ForeignKey(name = "pk_especialidade"))
 	private Especialidade especialidade;

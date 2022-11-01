@@ -38,6 +38,9 @@ public class Pessoa extends AbstractEntity<Long> {
 	 */
 	private static final long serialVersionUID = -156512222525627899L;
 
+	public static final String BUSCAR_POR_NOME_E_ENDERECO = "SELECT p FROM Pessoa p WHERE p.nome = :nome "//
+	        + "AND p.cep = :cep AND p.numeroCasa = :numeroCasa";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_pessoa")

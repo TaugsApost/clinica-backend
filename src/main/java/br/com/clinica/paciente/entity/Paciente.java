@@ -41,6 +41,8 @@ public class Paciente extends Pessoa {
 
 	public static final String CONUSLTAR_QUERY = "Select paciente From Paciente paciente Where " + CONSULTAR_QUERY_PARAMETROS;
 
+	public static final String PESQUISAR_POR_ID = "SELECT p FROM Paciente p WHERE p.id = :id";
+
 	private Double peso;
 
 	private Double altura;

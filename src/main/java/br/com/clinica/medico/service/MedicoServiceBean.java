@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import br.com.clinica.especialidade.entity.Especialidade;
 import br.com.clinica.exception.ServiceException;
 import br.com.clinica.medico.entity.Medico;
 import br.com.clinica.utils.AbstractServiceBean;
@@ -38,6 +39,13 @@ public class MedicoServiceBean extends AbstractServiceBean<Medico, Long> impleme
 	@Override
 	public Medico detalhar(Long id) throws ServiceException {
 		return this.detalharEntity(id);
+	}
+
+	@Override
+	public List<Medico> listarPorEspecialidade(Especialidade especialidade) {
+		return this.getEntityManager().createQuery(Medico.BUSCAR_POR_ESPECIALIDADE, Medico.class)//
+		        .setParameter("especialidade", especialidade)//
+		        .getResultList();
 	}
 
 }

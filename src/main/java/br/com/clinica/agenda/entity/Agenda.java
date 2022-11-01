@@ -36,6 +36,24 @@ public class Agenda extends AbstractEntity<Long> {
 	 * 
 	 */
 	private static final long serialVersionUID = 2734326106802416226L;
+
+	public static final String PESQUISAR_HORARIOS_OCUPADOS = "SELECT agenda.horario FROM Agenda agenda WHERE "//
+	        + "1 = 1 "//
+	        + "agenda.codigoMedico = :codigoMedico "//
+	        + "AND (agenda.data = CAST(:data as Timestamp))";
+
+	public static final String PESQUISAR_AGENDAMENTO_POR_MEDICO = "SELECT agenda FROM Agenda agenda WHERE " //
+	        + "agenda.codigoMedico = :codigoMedico "//
+	        + "AND ((UPPER(REPLACE(agenda.nome, 'áãàâäçéèëêùûüúóôöïîíÁÀÂÄÃÇÉÈËÊÙÛÜÚÓÔÖÏÎÍ','aaaaaceeeeuuuuoooiiiAAAAACEEEEUUUUOOOIII')) LIKE :nome)) " //
+	        + "AND (agenda.data = CAST(:data as Timestamp) or :data IS NULL) "//
+	        + "order by agenda.data, agenda.horario";
+
+	public static final String PESQUISAR_AGENDAMENTO = "SELECT agenda FROM Agenda agenda WHERE "//
+	        + "1 = 1 " //
+	        + "AND ((UPPER(REPLACE(agenda.nome, 'áãàâäçéèëêùûüúóôöïîíÁÀÂÄÃÇÉÈËÊÙÛÜÚÓÔÖÏÎÍ','aaaaaceeeeuuuuoooiiiAAAAACEEEEUUUUOOOIII')) LIKE :nome)) " //
+	        + "AND (agenda.data :operador CAST(:data as Timestamp) or :data IS NULL) "//
+	        + "order by ageenda.data, agenda.horario";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_agenda")

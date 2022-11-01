@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.clinica.especialidade.entity.Especialidade;
 import br.com.clinica.exception.ServiceException;
 import br.com.clinica.medico.entity.Medico;
 import br.com.clinica.medico.service.MedicoService;
@@ -30,6 +31,12 @@ public class MedicoResource {
 	public ResponseEntity<Medico> salvar(@RequestBody Medico Medico) throws ServiceException {
 		Medico entity = service.salvar(Medico);
 		return new ResponseEntity<Medico>(entity, HttpStatus.OK);
+	}
+
+	@PostMapping(value = "/listarPorEspecialidade")
+	public ResponseEntity<List<Medico>> listarPorEspecialidade(@RequestBody Especialidade especialidade) throws ServiceException {
+		List<Medico> lista = service.listarPorEspecialidade(especialidade);
+		return new ResponseEntity<List<Medico>>(lista, HttpStatus.OK);
 	}
 
 	@GetMapping(value = RestMapping.DETALHAR + "/{id}")
