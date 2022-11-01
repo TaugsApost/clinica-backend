@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.clinica.agenda.entity.Agenda;
 import br.com.clinica.agenda.search.AgendaFilter;
@@ -17,6 +19,8 @@ import br.com.clinica.pessoa.entity.Pessoa;
 import br.com.clinica.pessoa.service.PessoaService;
 import br.com.clinica.utils.AbstractServiceBean;
 
+@Service
+@Transactional
 public class AgendaServiceBean extends AbstractServiceBean<Agenda, Long> implements AgendaService {
 
 	@Autowired

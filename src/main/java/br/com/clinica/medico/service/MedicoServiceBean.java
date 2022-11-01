@@ -5,9 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.clinica.especialidade.entity.Especialidade;
+import br.com.clinica.especialidade.service.EspecialidadeService;
 import br.com.clinica.exception.ServiceException;
 import br.com.clinica.medico.entity.Medico;
 import br.com.clinica.utils.AbstractServiceBean;
@@ -15,6 +17,9 @@ import br.com.clinica.utils.AbstractServiceBean;
 @Service
 @Transactional
 public class MedicoServiceBean extends AbstractServiceBean<Medico, Long> implements MedicoService {
+
+	@Autowired
+	EspecialidadeService especialidadeService;
 
 	public MedicoServiceBean(EntityManager em) {
 		super(em);
@@ -24,6 +29,14 @@ public class MedicoServiceBean extends AbstractServiceBean<Medico, Long> impleme
 	@Override
 	public List<Medico> listarTodos() throws ServiceException {
 		return listarTodosEntity();
+	}
+
+	@Override
+	protected void beforeSave(Medico entity) throws ServiceException {
+		Especialidade especialidade = especialidadeService.pesquisarPorNome(entity.getEspecialidade().getNome());
+		if (especialidade != null)
+			entity.setEspecialidade(especialidade);
+		super.beforeSave(entity);
 	}
 
 	@Override
