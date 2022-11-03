@@ -4,12 +4,16 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
 
 import br.com.clinica.especialidade.entity.Especialidade;
 import br.com.clinica.exception.ServiceException;
 import br.com.clinica.utils.AbstractServiceBean;
 import br.com.clinica.utils.Utils;
-
+@Service
+@Transactional
 public class EspecialidadeServiceBean extends AbstractServiceBean<Especialidade, Long> implements EspecialidadeService {
 
 	public EspecialidadeServiceBean(EntityManager em) {
