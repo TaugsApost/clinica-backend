@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.clinica.especialidade.entity.Especialidade;
@@ -21,8 +22,11 @@ public class MedicoServiceBean extends AbstractServiceBean<Medico, Long> impleme
 	@Autowired
 	EspecialidadeService especialidadeService;
 
-	public MedicoServiceBean(EntityManager em) {
+	private final PasswordEncoder encoder;
+
+	public MedicoServiceBean(EntityManager em, PasswordEncoder encoder) {
 		super(em);
+		this.encoder = encoder;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -34,6 +38,7 @@ public class MedicoServiceBean extends AbstractServiceBean<Medico, Long> impleme
 	@Override
 	protected void beforeSave(Medico entity) throws ServiceException {
 		Especialidade especialidade = especialidadeService.pesquisarPorNome(entity.getEspecialidade().getNome());
+		entity.setSenhaHash(encoder.encode(entity.getSenhaHash()));
 		if (especialidade != null)
 			entity.setEspecialidade(especialidade);
 		super.beforeSave(entity);

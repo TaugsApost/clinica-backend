@@ -44,6 +44,17 @@ public class Funcionario extends Pessoa {
 
 	public static final String CONSULTAR_QUERY = "SELECT funcionario FROM Funcionario funcionario WHERE " + CONSULTAR_QUERY_PARAMS;
 
+	public static final String VALIDAR_LOGIN = "SELECT funcionario FROM Funcionario funcionario "//
+	        + "LEFT JOIN FETCH funcionario.contato contato "//
+	        + "WHERE 1 = 1 "//
+	        + "AND (UPPER(contato.email) = UPPER(:email)) "//
+	        + "AND (funcionario.senhaHash = :senha)";
+
+	public static final String PESQUISAR_POR_EMAIL = "SELECT funcionario FROM Funcionario funcionario "//
+	        + "LEFT JOIN FETCH funcionario.contato contato "//
+	        + "WHERE 1 = 1 "//
+	        + "AND (UPPER(contato.email) = UPPER(:email))";
+
 	private Timestamp dataContrato;
 
 	private Double salario;

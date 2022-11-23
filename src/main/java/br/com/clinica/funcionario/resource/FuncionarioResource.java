@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.clinica.exception.ServiceException;
 import br.com.clinica.funcionario.entity.Funcionario;
+import br.com.clinica.funcionario.entity.Login;
 import br.com.clinica.funcionario.search.FuncionarioFilter;
 import br.com.clinica.funcionario.search.FuncionarioResponse;
 import br.com.clinica.funcionario.service.FuncionarioService;
@@ -56,6 +57,16 @@ public class FuncionarioResource {
 	public ResponseEntity<String> excluirFuncionario(@PathVariable("id") Long id) throws ServiceException {
 		String msg = service.excluir(id);
 		return new ResponseEntity<String>(msg, HttpStatus.OK);
+	}
+
+	@PostMapping(value = "/logar")
+	public ResponseEntity<FuncionarioResponse> logar(@RequestBody Login login) {
+		FuncionarioResponse response = this.service.logar(login);
+		if (response.getId() != null) {
+			return new ResponseEntity<FuncionarioResponse>(response, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<FuncionarioResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 }
