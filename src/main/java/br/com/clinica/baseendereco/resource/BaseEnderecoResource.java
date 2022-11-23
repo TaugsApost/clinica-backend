@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.clinica.baseendereco.entity.BaseEndereco;
 import br.com.clinica.baseendereco.service.BaseEnderecoService;
+import br.com.clinica.exception.ServiceException;
+import br.com.clinica.utils.RestMapping;
 
 @CrossOrigin("*")
 @RestController
@@ -24,6 +26,12 @@ public class BaseEnderecoResource {
 	public ResponseEntity<BaseEndereco> pesquisarPorCep(@RequestBody String cep) {
 		BaseEndereco entity = service.consultarPorCep(cep);
 		return new ResponseEntity<BaseEndereco>(entity, HttpStatus.OK);
+	}
+
+	@PostMapping(value = RestMapping.SALVAR)
+	public ResponseEntity<BaseEndereco> salvar(@RequestBody BaseEndereco entity) throws ServiceException {
+		BaseEndereco response = service.salvar(entity);
+		return new ResponseEntity<BaseEndereco>(response, HttpStatus.OK);
 	}
 
 }
