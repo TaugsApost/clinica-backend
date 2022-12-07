@@ -13,8 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.clinica.medico.entity.Medico;
 import br.com.clinica.utils.AbstractEntity;
@@ -59,8 +59,8 @@ public class Agenda extends AbstractEntity<Long> {
 	@Column(name = "id_agenda")
 	private Long codigo;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonManagedReference
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
 	@JoinColumn(name = "id_medico", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "pk_agenda_medico"))
 	private Medico medico;
 

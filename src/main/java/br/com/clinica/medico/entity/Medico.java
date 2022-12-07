@@ -2,7 +2,9 @@ package br.com.clinica.medico.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -10,7 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.clinica.agenda.entity.Agenda;
@@ -44,8 +48,8 @@ public class Medico extends Funcionario {
 
 	private Long crm;
 
-	@JsonBackReference
-	@OneToMany(mappedBy = "medico")
+	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	List<Agenda> consultas;
 
 }
