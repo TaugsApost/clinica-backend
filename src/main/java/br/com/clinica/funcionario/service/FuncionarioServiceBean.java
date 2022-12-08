@@ -19,6 +19,7 @@ import br.com.clinica.funcionario.funcao.Funcao;
 import br.com.clinica.funcionario.search.FuncionarioFilter;
 import br.com.clinica.funcionario.search.FuncionarioMapper;
 import br.com.clinica.funcionario.search.FuncionarioResponse;
+import br.com.clinica.medico.entity.Medico;
 import br.com.clinica.utils.AbstractServiceBean;
 
 @Transactional
@@ -86,7 +87,15 @@ public class FuncionarioServiceBean extends AbstractServiceBean<Funcionario, Lon
 			        .getSingleResult();
 			if (encoder.matches(login.getSenha(), funcionario.getSenhaHash())) {
 				FuncionarioResponse response = new FuncionarioResponse(funcionario.getId(), funcionario.getNome());
-				response.setFuncao(Funcao.FUNCIONARIO);
+				try {
+					Medico medico = this.getEntityManager().createQuery(Medico.BUSCAR_POR_ID, Medico.class)//
+					        .setParameter("id", response.getId())//
+					        .getSingleResult();
+					response.setFuncao(Funcao.MEDICO);
+				} catch (NoResultException e) {
+					response.setFuncao(Funcao.FUNCIONARIO);
+				}
+
 				return response;
 			} else {
 				return new FuncionarioResponse();

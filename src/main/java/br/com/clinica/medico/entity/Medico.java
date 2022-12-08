@@ -40,6 +40,8 @@ public class Medico extends Funcionario {
 	 */
 	private static final long serialVersionUID = 6320399040147760013L;
 
+	public static final String BUSCAR_POR_ID = "SELECT medico FROM Medico medico where medico.id = :id";
+
 	public static final String BUSCAR_POR_ESPECIALIDADE = "SELECT medico From Medico medico WHERE medico.especialidade = :especialidade";
 
 	public static final String BUSCAR_POR_CRM = "SELECT medico FROM Medico medico where medico.crm = :crm";
