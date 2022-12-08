@@ -42,7 +42,9 @@ public class Medico extends Funcionario {
 
 	public static final String BUSCAR_POR_ESPECIALIDADE = "SELECT medico From Medico medico WHERE medico.especialidade = :especialidade";
 
-	@ManyToOne
+	public static final String BUSCAR_POR_CRM = "SELECT medico FROM Medico medico where medico.crm = :crm";
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_especialidade", nullable = false, foreignKey = @ForeignKey(name = "pk_especialidade"))
 	private Especialidade especialidade;
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.clinica.especialidade.entity.Especialidade;
 import br.com.clinica.exception.ServiceException;
+import br.com.clinica.funcionario.entity.Funcionario;
 import br.com.clinica.medico.entity.Medico;
 import br.com.clinica.medico.service.MedicoService;
 import br.com.clinica.utils.RestMapping;
@@ -28,9 +29,9 @@ public class MedicoResource {
 	MedicoService service;
 
 	@PostMapping(value = RestMapping.SALVAR)
-	public ResponseEntity<Medico> salvar(@RequestBody Medico Medico) throws ServiceException {
-		Medico entity = service.salvar(Medico);
-		return new ResponseEntity<Medico>(entity, HttpStatus.OK);
+	public ResponseEntity<Funcionario> salvar(@RequestBody Medico Medico) throws ServiceException {
+		Funcionario entity = service.salvar(Medico);
+		return new ResponseEntity<Funcionario>(entity, HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/listarPorEspecialidade")

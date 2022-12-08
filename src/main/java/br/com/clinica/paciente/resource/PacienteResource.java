@@ -18,6 +18,8 @@ import br.com.clinica.paciente.entity.Paciente;
 import br.com.clinica.paciente.search.PacienteFilter;
 import br.com.clinica.paciente.search.PacienteResponse;
 import br.com.clinica.paciente.service.PacienteService;
+import br.com.clinica.pessoa.entity.Pessoa;
+import br.com.clinica.pessoa.service.PessoaService;
 import br.com.clinica.utils.RestMapping;
 
 @CrossOrigin("*")
@@ -28,10 +30,13 @@ public class PacienteResource {
 	@Autowired
 	PacienteService service;
 
+	@Autowired
+	PessoaService pessoaService;
+
 	@PostMapping(value = RestMapping.SALVAR)
-	public ResponseEntity<Paciente> salvar(@RequestBody Paciente Paciente) throws ServiceException {
-		Paciente entity = service.salvar(Paciente);
-		return new ResponseEntity<Paciente>(entity, HttpStatus.OK);
+	public ResponseEntity<Pessoa> salvar(@RequestBody Paciente paciente) throws ServiceException {
+		Pessoa entity = pessoaService.salvar(paciente);
+		return new ResponseEntity<Pessoa>(entity, HttpStatus.OK);
 	}
 
 	@PostMapping(value = RestMapping.BUSCAR)

@@ -22,7 +22,7 @@ import br.com.clinica.utils.RestMapping;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/Agenda")
+@RequestMapping("/agenda")
 public class AgendaResource {
 
 	@Autowired

@@ -30,7 +30,7 @@ public class Especialidade extends AbstractEntity<Long> {
 	private static final long serialVersionUID = 1412363799015797045L;
 
 	public static final String PESQUISAR_POR_NOME = "SELECT e FROM Especialidade e WHERE "//
-	        + "AND ((UPPER(REPLACE(e.nome, 'áãàâäçéèëêùûüúóôöïîíÁÀÂÄÃÇÉÈËÊÙÛÜÚÓÔÖÏÎÍ','aaaaaceeeeuuuuoooiiiAAAAACEEEEUUUUOOOIII')) = :nome)) ";
+	        + " ((UPPER(REPLACE(e.nome, 'áãàâäçéèëêùûüúóôöïîíÁÀÂÄÃÇÉÈËÊÙÛÜÚÓÔÖÏÎÍ','aaaaaceeeeuuuuoooiiiAAAAACEEEEUUUUOOOIII')) LIKE :nome)) ";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

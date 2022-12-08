@@ -3,6 +3,7 @@ package br.com.clinica.medico.service;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Service;
 import br.com.clinica.especialidade.entity.Especialidade;
 import br.com.clinica.especialidade.service.EspecialidadeService;
 import br.com.clinica.exception.ServiceException;
+import br.com.clinica.funcionario.service.FuncionarioService;
 import br.com.clinica.medico.entity.Medico;
+import br.com.clinica.pessoa.service.PessoaService;
 import br.com.clinica.utils.AbstractServiceBean;
 
 @Service
@@ -21,6 +24,12 @@ public class MedicoServiceBean extends AbstractServiceBean<Medico, Long> impleme
 
 	@Autowired
 	EspecialidadeService especialidadeService;
+
+	@Autowired
+	PessoaService pessoaService;
+
+	@Autowired
+	FuncionarioService funcionarioService;
 
 	private final PasswordEncoder encoder;
 
@@ -37,6 +46,17 @@ public class MedicoServiceBean extends AbstractServiceBean<Medico, Long> impleme
 
 	@Override
 	protected void beforeSave(Medico entity) throws ServiceException {
+		Medico medico;
+		try {
+			medico = this.getEntityManager().createQuery(Medico.BUSCAR_POR_CRM, Medico.class)//
+			        .setParameter("crm", entity.getCrm())//
+			        .getSingleResult();
+		} catch (NoResultException e) {
+			medico = null;
+		}
+		if (medico != null) {
+			throw new ServiceException("Número do CRM duplicado");
+		}
 		Especialidade especialidade = especialidadeService.pesquisarPorNome(entity.getEspecialidade().getNome());
 		entity.setSenhaHash(encoder.encode(entity.getSenhaHash()));
 		if (especialidade != null)
@@ -46,7 +66,7 @@ public class MedicoServiceBean extends AbstractServiceBean<Medico, Long> impleme
 
 	@Override
 	public Medico salvar(Medico entity) throws ServiceException {
-		return salvarEntity(entity);
+		return this.salvarEntity(entity);
 	}
 
 	@Override
