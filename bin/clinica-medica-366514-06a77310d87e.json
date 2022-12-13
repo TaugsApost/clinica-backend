@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "clinica-medica-366514",
+  "private_key_id": "06a77310d87e28b2102c671be848a2a8d42694ac",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAeUYnW9h+tTIp\ncX1JArEKh/+wguPk0H7f8B7t9foMwaN1b5VWdrgUhNgTmmubEe+4u6bZFeQLydHg\nmGLgYYAC567i6hCzwiwDN9VBbK3OprFLw/ygXIOwrpNbBV2AzbRQsnO/lAX1yK8Z\nfTbjH4Ica38LsOTHrIaSV6tgOOBEkZvlFy5mrlK/3gzZNF/d1CUCur7TLhZn6vbE\ngr6XlzEbm8y6CJqAeE7ZAQrXMWUy2YTNjMbDCXXZZRlsWmJdn8zzo8qD5RsbhhsO\nQR0gl8AhAGMBvHUcRmTOoms370Ir5yvamIQJKPDog56IlepCNVwcIKqCcdSM0Koj\n9XNk61GlAgMBAAECggEABdDUSBWsH74BX0O03aslZtRPq0l1MeGD5+fVQ2ryjIag\nVgjSWhu5ubL+5W690CB1Xh9bbgVNj/af7xmjqTSA/fV6sRQR/6B/HHTILpMmWE9s\nnYW1QTIyb3kC7lXl6qGskGCoAzKpkHDpK4u/SBMYZxvvaY7FhuwFX/Ait0RYsHGp\necHLcodLV74EE9c4mhhqUvj1e0sqFkMxrh++Zfh2UYniHbNh9Na5fEAn30tErzeA\nMre7DPdWZuPN7BXAw271NxbaOI2mCTDOBoKXzPbFwWYD6zwnD+/csjzuBSeBz9rY\nFzqgeYjdJKJ/1MURa2hslqymPFFsSawt/2lFlrtaKQKBgQDiM11w1TMFNUUWgYp7\nI2MhxCRH/YNTfXMTIt5UIlEHKH2joeRnD/s11M5XMCmioA3xi7pBaW4GoUWqBJFq\nb6Gf1HeNtZXmTXuW8TFzg1dC3GZoaP2/6f0Kth47wf514Xs8Gg7SfO8yyFFpNDRy\nMXOIDutPtVi1NVAwtRcgVykfTQKBgQDZ1HdMWEcfxdMQJtK4UCyBqMB8Kr6WpepW\ntguj7RlllBLL6EbkMlDHURlx0yj8pyHg3Aa2xdvEQPvgRzeNSODHaEUdkMIfI7UZ\n1vpbO6N8ob4aXckbxA5BW9IjXMr05sLyXEm9a5qlFB9nKcwQvoZtGjPIXgduH6BR\nqzSuYx7/uQKBgCq/LDxjffXRAFJlfqcQo+5Ao96a8RN5FKMcJsndhlSE+WFP+drk\nMUQWCDx/1I5wEtJ/5l3wL6O/HGwp2tUzbWbH/yPfmglgwSdgQ0kiG/59qji3BqUa\n8f/xNLt0SMM8Lk7IWd67T3TYWFI6VGL0J3Ih56QzkCUGgzYBMvKgphvNAoGAWqLK\nJM0SgwjoIm9U/HX3ntedh8ytUrekgwHqZAHysE5lZ8y1Opwo+lYnVTI8eqv8L7i9\nXm2DXOyBITfgyHvLc41SPNQPwa802pSVxUJSazhNhmEBnfj8yXswO6CPnkkqUnfO\nAu/z/74Ytu8wRsNP4bOmWjettceZCIJJQEpkCpkCgYEAk+nzSwxZbjgYvjwS0vnF\nxkoligNAeWOeuN0dnAMRhFvEJHKxhAeOXSq+5Imv1Z66qUqnJt4h9GiXe/4QNz2S\n1wxN6cos63e4VUbEdlWSMJqWmMDq9sPc6YCfN1oARyBH8s6o2lQXYrXh00HNlP5I\npwKOFxOiG79lFoTJbaWGVFY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "taugs-599@clinica-medica-366514.iam.gserviceaccount.com",
+  "client_id": "117266681943715373281",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/taugs-599%40clinica-medica-366514.iam.gserviceaccount.com"
+}
