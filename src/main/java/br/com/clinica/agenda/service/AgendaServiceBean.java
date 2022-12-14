@@ -15,9 +15,9 @@ import br.com.clinica.agenda.search.AgendaMapper;
 import br.com.clinica.agenda.search.AgendaResponse;
 import br.com.clinica.exception.ServiceException;
 import br.com.clinica.paciente.service.PacienteService;
-import br.com.clinica.pessoa.entity.Pessoa;
 import br.com.clinica.pessoa.service.PessoaService;
 import br.com.clinica.utils.AbstractServiceBean;
+import br.com.clinica.utils.Utils;
 
 @Service
 @Transactional
@@ -78,14 +78,16 @@ public class AgendaServiceBean extends AbstractServiceBean<Agenda, Long> impleme
 		Query query = this.getEntityManager().createQuery(Agenda.PESQUISAR_AGENDAMENTO, Agenda.class);
 		query.setParameter("codigoMedico", filter.getCodigoMedico());
 		query.setParameter("data", filter.getData());
+		query.setParameter("nome", Utils.stringLike(filter.getNome()));
+		query.setParameter("horario", filter.getHorario());
 		List<AgendaResponse> resultado = AgendaMapper.toResponse(query.getResultList());
-		for (AgendaResponse response : resultado) {
-			Pessoa pessoa = pessoaService.pesquisarPorNomeEndereco(filter.getNome(), filter.getCep(), filter.getNumeroCasa());
-			if (pacienteService.detalhar(pessoa.getId()) == null)
-				response.setPacienteCadastrado(false);
-			else
-				response.setPacienteCadastrado(true);
-		}
+		// for (AgendaResponse response : resultado) {
+		// Pessoa pessoa = pessoaService.pesquisarPorNomeEndereco(filter.getNome(), filter.getCep(), filter.getNumeroCasa());
+		// if (pacienteService.detalhar(pessoa.getId()) == null)
+		// response.setPacienteCadastrado(false);
+		// else
+		// response.setPacienteCadastrado(true);
+		// }
 		return resultado;
 	}
 

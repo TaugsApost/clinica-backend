@@ -51,8 +51,10 @@ public class Agenda extends AbstractEntity<Long> {
 	public static final String PESQUISAR_AGENDAMENTO = "SELECT agenda FROM Agenda agenda WHERE "//
 	        + "1 = 1 " //
 	        + "AND ((UPPER(REPLACE(agenda.nome, 'áãàâäçéèëêùûüúóôöïîíÁÀÂÄÃÇÉÈËÊÙÛÜÚÓÔÖÏÎÍ','aaaaaceeeeuuuuoooiiiAAAAACEEEEUUUUOOOIII')) LIKE :nome)) " //
-	        + "AND (agenda.data :operador CAST(:data as Timestamp) or :data IS NULL) "//
-	        + "order by ageenda.data, agenda.horario";
+	        + "AND (agenda.codigoMedico = :codigoMedico OR :codigoMedico IS NULL) "//
+	        + "AND (agenda.horario = :horario OR :horario IS NULL) "//
+	        + "AND (agenda.data = :data or :data IS NULL) "//
+	        + "order by agenda.data, agenda.horario";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
