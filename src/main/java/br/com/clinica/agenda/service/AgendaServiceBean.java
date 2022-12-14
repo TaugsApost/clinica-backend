@@ -69,6 +69,8 @@ public class AgendaServiceBean extends AbstractServiceBean<Agenda, Long> impleme
 		Query query = this.getEntityManager().createQuery(Agenda.PESQUISAR_AGENDAMENTO_POR_MEDICO, Agenda.class);
 		query.setParameter("codigoMedico", filter.getCodigoMedico());
 		query.setParameter("data", filter.getData());
+		query.setParameter("nome", Utils.stringLike(filter.getNome()));
+		query.setParameter("horario", filter.getHorario());
 		return AgendaMapper.toResponse(query.getResultList());
 	}
 
