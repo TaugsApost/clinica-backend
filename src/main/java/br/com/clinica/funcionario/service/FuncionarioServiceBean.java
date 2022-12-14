@@ -21,6 +21,7 @@ import br.com.clinica.funcionario.search.FuncionarioMapper;
 import br.com.clinica.funcionario.search.FuncionarioResponse;
 import br.com.clinica.medico.entity.Medico;
 import br.com.clinica.utils.AbstractServiceBean;
+import br.com.clinica.utils.Utils;
 
 @Transactional
 @Service
@@ -65,14 +66,14 @@ public class FuncionarioServiceBean extends AbstractServiceBean<Funcionario, Lon
 	public List<FuncionarioResponse> consultar(FuncionarioFilter filter) throws ServiceException {
 		List<FuncionarioResponse> resultado = new ArrayList<FuncionarioResponse>();
 		Query query = this.getEntityManager().createQuery(Funcionario.CONSULTAR_QUERY);
-		query.setParameter("nome", filter.getNome());
+		query.setParameter("nome", Utils.stringLike(filter.getNome()));
 		query.setParameter("cidade", filter.getCidade());
 		query.setParameter("estado", filter.getEstado());
 		query.setParameter("bairro", filter.getBairro());
 		query.setParameter("salario", filter.getSalario());
 		query.setParameter("dataContrato", filter.getDataContrato());
-		query.setParameter("operadorSalario", filter.getOperadorSalario());
-		query.setParameter("operadorData", filter.getOperadorData());
+		// query.setParameter("operadorSalario", filter.getOperadorSalario());
+		// query.setParameter("operadorData", filter.getOperadorData());
 
 		resultado = FuncionarioMapper.toResponse(query.getResultList());
 

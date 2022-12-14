@@ -39,8 +39,8 @@ public class Agenda extends AbstractEntity<Long> {
 
 	public static final String PESQUISAR_HORARIOS_OCUPADOS = "SELECT agenda.horario FROM Agenda agenda WHERE "//
 	        + "1 = 1 "//
-	        + "agenda.codigoMedico = :codigoMedico "//
-	        + "AND (agenda.data = CAST(:data as Timestamp))";
+	        + "AND agenda.codigoMedico = :codigoMedico "//
+	        + "AND (agenda.data = :data)";
 
 	public static final String PESQUISAR_AGENDAMENTO_POR_MEDICO = "SELECT agenda FROM Agenda agenda WHERE " //
 	        + "agenda.codigoMedico = :codigoMedico "//

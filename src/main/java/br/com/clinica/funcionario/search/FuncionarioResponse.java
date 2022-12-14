@@ -1,7 +1,5 @@
 package br.com.clinica.funcionario.search;
 
-import java.sql.Timestamp;
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
@@ -17,7 +15,9 @@ public class FuncionarioResponse {
 
 	private Long id;
 	private String nome;
-	private Timestamp dataContrato;
+	private String salario;
+	private String dataContrato;
+	// private Timestamp dataContrato;
 	@Enumerated(EnumType.STRING)
 	private Funcao funcao;
 

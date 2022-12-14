@@ -11,9 +11,9 @@ public class PacienteMapper {
 		PacienteResponse to = new PacienteResponse();
 
 		to.setId(from.getId());
-		to.setAlutra(from.getAltura());
+		to.setAltura(String.format("%.2f m", from.getAltura()));
 		to.setNome(from.getNome());
-		to.setPeso(from.getPeso());
+		to.setPeso(String.format("%.2f Kg", from.getPeso()));
 		to.setTipoSanguineo(from.getTipoSanguineo());
 
 		return to;

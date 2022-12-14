@@ -38,8 +38,8 @@ public class Funcionario extends Pessoa {
 	        + "AND (funcionario.cidade = :cidade OR :cidade IS NULL) " //
 	        + "AND (funcionario.estado = :estado OR :estado IS NULL) " //
 	        + "AND (funcionario.bairro = :bairro OR :bairro IS NULL) " //
-	        + "AND (funcionario.salario :operadorSalario :salario OR :salario IS NULL)"//
-	        + "AND (funcionario.dataContrato :operadorData CAST(:dataContrato AS timestamp) OR :dataContrato IS NULL) " //
+	        + "AND (funcionario.salario = :salario OR :salario IS NULL)"//
+	        + "AND (funcionario.dataContrato = :dataContrato OR :dataContrato IS NULL) " //
 	        + "order by funcionario.nome";
 
 	public static final String CONSULTAR_QUERY = "SELECT funcionario FROM Funcionario funcionario WHERE " + CONSULTAR_QUERY_PARAMS;

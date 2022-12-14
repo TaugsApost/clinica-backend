@@ -10,7 +10,7 @@ public class PacienteResponse {
 	private Long id;
 	private String nome;
 	private String tipoSanguineo;
-	private Double alutra;
-	private Double peso;
+	private String altura;
+	private String peso;
 
 }
