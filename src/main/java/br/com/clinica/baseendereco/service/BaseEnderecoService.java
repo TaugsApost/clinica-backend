@@ -3,6 +3,7 @@ package br.com.clinica.baseendereco.service;
 import java.util.List;
 
 import br.com.clinica.baseendereco.entity.BaseEndereco;
+import br.com.clinica.baseendereco.search.BaseEnderecoFilter;
 import br.com.clinica.utils.IService;
 
 public interface BaseEnderecoService extends IService<BaseEndereco, Long> {
@@ -20,5 +21,7 @@ public interface BaseEnderecoService extends IService<BaseEndereco, Long> {
 	List<String> consultarRuasPorCidade(String cidade);
 
 	List<String> consultarRuasPorBairro(String bairro);
+
+	List<BaseEndereco> consultar(BaseEnderecoFilter filter);
 
 }

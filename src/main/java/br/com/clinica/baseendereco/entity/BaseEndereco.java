@@ -43,6 +43,9 @@ public class BaseEndereco extends AbstractEntity<Long> {
 	public static final String BUSCAR_RUAS_POR_ESTADO = "SELECT endereco.logradouro FROM BaseEndereco endereco WHERE " //
 	        + "endereco.estado = :estado order by endereco.logradouro";
 
+	public static final String CONSULTAR = "SELECT endereco FROM BaseEndereco endereco WHERE "//
+	        + "endereco.cep LIKE :cep";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_endereco")

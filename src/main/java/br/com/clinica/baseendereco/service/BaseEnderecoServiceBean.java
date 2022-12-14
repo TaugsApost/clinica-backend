@@ -9,8 +9,10 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import br.com.clinica.baseendereco.entity.BaseEndereco;
+import br.com.clinica.baseendereco.search.BaseEnderecoFilter;
 import br.com.clinica.exception.ServiceException;
 import br.com.clinica.utils.AbstractServiceBean;
+import br.com.clinica.utils.Utils;
 
 @Service
 @Transactional
@@ -93,6 +95,13 @@ public class BaseEnderecoServiceBean extends AbstractServiceBean<BaseEndereco, L
 	public List<String> consultarRuasPorBairro(String bairro) {
 		return this.getEntityManager().createQuery(BaseEndereco.BUSCAR_RUAS_POR_BAIRRO, String.class)//
 		        .setParameter("bairro", bairro)//
+		        .getResultList();
+	}
+
+	@Override
+	public List<BaseEndereco> consultar(BaseEnderecoFilter filter) {
+		return this.getEntityManager().createQuery(BaseEndereco.CONSULTAR, BaseEndereco.class)//
+		        .setParameter("cep", Utils.stringLike(filter.getCep()))//
 		        .getResultList();
 	}
 
